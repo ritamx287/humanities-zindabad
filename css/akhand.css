@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .text-wrap {
+    position: relative;
+    perspective: 1000px;
+  }
+
+  .Akhand {
+    font-family: 'Akhand', sans-serif;
+    font-size: 5rem;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin: 0;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-out;
+  }
+
+  .Akhand::before,
+  .Akhand::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+  }
+
+  .Akhand::before {
+    color: #cc99ff;
+    transform: translate3d(-1px, 1px, 0);
+  }
+
+  .Akhand::after {
+    color: #66ccff;
+    transform: translate3d(1px, -1px, 0);
+  }
+
+  @media (max-width: 768px) {
+    .Akhand {
+      font-size: 2rem;
+    }
+  }

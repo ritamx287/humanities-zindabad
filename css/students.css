@@ -1,0 +1,166 @@
+body {
+    background-color: #000000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+
+  .grid-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
+
+  .grid-item:hover {
+    transform: translateY(-10px) rotateX(10deg);
+  }
+
+  .grid-item:hover img {
+    transform: scale(1.1) rotateX(0);
+    filter: blur(5px); /* Add a blur effect on hover */
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+  }
+
+  .grid-item:hover .overlay {
+    opacity: 1;
+    transform: rotateX(360deg);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8); /* Smoothly change the box shadow color on hover */
+  }
+
+  .content {
+    text-align: center;
+    transform-style: preserve-3d;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .hover-text {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: shining 1.5s infinite;
+  }
+
+  @keyframes shining {
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+
+  .grid-item:hover .hover-text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .description {
+    color: #f9c453;
+    font-size: 16px;
+    margin: 8px 0;
+    position: relative;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .description::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #f9c453;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .description:hover::after {
+    transform: scaleX(1);
+  }
+
+  .number {
+    color: #fff; /* Text color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family */
+    font-size: 24px; /* Font size */
+    background-color: #111; /* Background color */
+    padding: 10px 20px 10px 10px; /* Padding: top right bottom left */
+    display: inline-block;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Shadow */
+    animation: slideIn 1s ease-in-out;
+    background-image: linear-gradient(to bottom, #333, #111); /* Gradient background */
+    transform-origin: right; /* Set transform origin to the right side */
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px) scale(0.8); /* Scale down the initial size */
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1); /* Scale up to the original size */
+    }
+  }
+
+  .number:hover {
+    color: #ff00ff; /* New text color on hover */
+    background-image: linear-gradient(to bottom, #666, #333); /* New gradient background on hover */
+  }
